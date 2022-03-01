@@ -30,7 +30,11 @@ namespace LinqProject
 
 
 
-            //AnyTestMethod(products);
+            //OrderBy(products);
+            //Where(products);
+            //FindAll(products);
+            //FindMethod(products);
+            //AnyMethod(products);
 
             //GetProducts(products);
             //GetProductsByLinq(products);
@@ -38,7 +42,37 @@ namespace LinqProject
             Console.ReadLine();
         }
 
-        private static void AnyTestMethod(List<Product> products)
+        private static void OrderBy(List<Product> products)
+        {
+            var result = products.OrderBy(p => p.UnitPrice);
+            foreach (var item in result)
+            {
+                Console.WriteLine(item.UnitPrice);
+            }
+        }
+
+        private static void Where(List<Product> products)
+        {
+            var result = products.Where(p => p.ProductName.Contains("Xi"));
+            foreach (var item in result)
+            {
+                Console.WriteLine(item.ProductName);
+            }
+        }
+
+        private static void FindAll(List<Product> products)
+        {
+            var result = products.FindAll(p => p.ProductName.Contains("Xi"));
+            Console.WriteLine(result);
+        }
+
+        private static void FindMethod(List<Product> products)
+        {
+            var result = products.First(p => p.ProductId == 3);
+            Console.WriteLine(result.ProductName);
+        }
+
+        private static void AnyMethod(List<Product> products)
         {
             var result = products.Any(p => p.ProductName == "HP");
             Console.WriteLine(result);
@@ -60,7 +94,7 @@ namespace LinqProject
 
         static List<Product> GetProductsByLinq(List<Product> products)
         {
-            return products.Where(p=>p.UnitPrice>300).ToList();
+            return products.Where(p => p.UnitPrice > 300).ToList();
         }
 
     }
