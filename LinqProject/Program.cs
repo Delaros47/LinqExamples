@@ -29,7 +29,8 @@ namespace LinqProject
 
 
 
-
+            //GetAllProductsByUnitPriceCondition(products);
+            //GetAllProducts(products);
             //OrderBy(products);
             //Where(products);
             //FindAll(products);
@@ -40,6 +41,29 @@ namespace LinqProject
             //GetProductsByLinq(products);
 
             Console.ReadLine();
+        }
+
+        private static void GetAllProductsByUnitPriceCondition(List<Product> products)
+        {
+            var result = from p in products
+                         where p.UnitPrice > 3500
+                         orderby p.UnitPrice descending
+                         select p;
+            foreach (var item in result)
+            {
+                Console.WriteLine(item.ProductName);
+            }
+        }
+
+        private static void GetAllProducts(List<Product> products)
+        {
+            var result = from p in products
+                         select p;
+
+            foreach (var item in result)
+            {
+                Console.WriteLine(item.ProductName);
+            }
         }
 
         private static void OrderBy(List<Product> products)
