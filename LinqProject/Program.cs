@@ -26,8 +26,15 @@ namespace LinqProject
 
 
             };
-
-
+            var result = from p in products
+                         join c in categories
+                         on p.CategoryId equals c.CategoryId
+                         select new ProductDto { ProductId = p.ProductId, ProductName = p.ProductName, CategoryName = c.CategoryName, UnitPrice = p.UnitPrice };
+            foreach (var item in result)
+            {
+                Console.WriteLine($"{item.ProductName,-15} {item.CategoryName,-15}");
+            }
+         
 
             //GetAllProductsByUnitPriceCondition(products);
             //GetAllProducts(products);
